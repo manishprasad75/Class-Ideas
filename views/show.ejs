@@ -1,0 +1,60 @@
+<% include ./partials/header.ejs %>
+<div class = "ui main text container  ui raised segment">
+    <div class="ui huge header"><%= blog.title %></div>
+    <div class="ui top attached">
+        <div class="item">
+           
+            <div class="content" style=" padding: 1em">
+                <span style="color: rgba(0,0,0,.6)"><%= blog.created.toDateString() %></span>
+            </div>
+            
+            <div class="description">
+                <p><%- blog.body %></p>
+            </div>
+            
+            <div style="margin: 1rem">
+                <a class="ui orange basic button" href="/blogs/<%= blog._id %>/edit">Edit</a>
+                <form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+                    <button class="ui red basic button">Delete</button>
+                </form>
+            </div>
+            
+            
+        </div>
+    </div>
+        
+        
+        
+</div>
+
+
+<div class="ui main text container segment">
+    <div class="ui small comments">
+        <div>
+            <a class="ui basic green button" href="/blogs/<%=blog._id%>/comments/new">Add New Comment</a>
+        </div>  
+        <h3 class="ui dividing header">Comments</h3>
+    <%blog.posts.forEach(function(comment){ %>
+        <div class="comment">
+            <a class="avatar" style="color: black">
+                <!-- <img src="/images/avatar/small/matt.jpg" alt=""> -->
+                <i class="ui large user icon"></i>
+            </a>
+            <div class="content">
+                <a class="author"><%=comment.author%></a>
+                <div class="metadata">
+                    <%var options = { weekday: 'long', hour: 'numeric', minute: 'numeric', minute: 'numeric' } %>
+                    <span class="date"><%=comment.date.toLocaleDateString("en-US", options)%></span>
+                </div>
+                <div class="text">
+                    <%=comment.content%>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+        
+    </div>
+
+</div>
+
+<% include ./partials/footer.ejs %>

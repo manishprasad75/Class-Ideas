@@ -1,0 +1,12 @@
+i.code {
+    font-size: 1.5em;
+    font-weight: 400;
+}
+
+.container.main {
+    margin-top: 3.0em;
+}
+
+#delete {
+    display: inline;
+}

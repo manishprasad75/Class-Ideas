@@ -1,0 +1,19 @@
+<% include partials/header %>
+<div class="ui main text container segment">
+    <h1>Add Comment</h1>
+    <form class="ui form" action="/blogs/<%= cat._id %>/comments" method="POST">
+        <div class="field">
+            <label for="name">Content</label>
+            <input type="text" name="comment" id="name" placeholder="Add Comment">
+        </div>
+        
+        <div class="field">
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author" placeholder="Author">
+        </div>
+        <button class="ui basic purple large button">Submit</button>
+    </form>
+</div>
+
+
+<% include partials/footer %>
